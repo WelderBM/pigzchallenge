@@ -45,8 +45,8 @@ export const ForgotPassword = styled.Text`
 export const CreateAccountBox = styled.View`
   flex-direction: row;
   margin-top: 36px;
-  justify-content: center; /* Centraliza o conteúdo horizontalmente */
-  align-items: center; /* Alinha os itens na linha */
+  justify-content: center;
+  align-items: center;
 `;
 
 export const CreateAccountgray = styled.Text`

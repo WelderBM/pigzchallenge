@@ -31,6 +31,7 @@ import {
   TabbarBox,
   TabbarCard,
   TabbarText,
+  NotificationDot,
 } from './styles';
 import ArrowBack from '../../assets/arrow_back_black_24dp.svg';
 import Eye from '../../assets/eye-dashboard.svg';
@@ -44,9 +45,9 @@ const DashboardScreen = () => {
   const navigation = useNavigation();
   const [isVisible, setIsVisible] = useState(true);
   const [inputValue, setInputValue] = useState('');
-  const [stateRelatorios, setStateRelatorios] = useState('');
-  const [stateGeral, setStateGeral] = useState('');
-  const [statePerfil, setStatePerfil] = useState('');
+  const [stateRelatorios, setStateRelatorios] = useState<'ativo' | 'ativoComNotificacao' | 'desativado'>('desativado');
+  const [stateGeral, setStateGeral] = useState<'ativo' | 'ativoComNotificacao' | 'desativado'>('desativado');
+  const [statePerfil, setStatePerfil] = useState<'ativo' | 'ativoComNotificacao' | 'desativado'>('desativado');
 
   const handlePressRelatorios = () => {
     setStateRelatorios((prev) => {
@@ -55,6 +56,7 @@ const DashboardScreen = () => {
       return 'desativado';
     });
   };
+
   const handlePressGeral = () => {
     setStateGeral((prev) => {
       if (prev === 'desativado') return 'ativo';
@@ -62,14 +64,14 @@ const DashboardScreen = () => {
       return 'desativado';
     });
   };
+
   const handlePressPerfil = () => {
-    setStateRelatorios((prev) => {
+    setStatePerfil((prev) => {
       if (prev === 'desativado') return 'ativo';
       if (prev === 'ativo') return 'ativoComNotificacao';
       return 'desativado';
     });
   };
-
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
@@ -121,46 +123,112 @@ const DashboardScreen = () => {
           </CardBox>
         </ResumeCardsBox>
       </ResumeBox>
-          <QRCodeBox>
-            <QRCodeTitle>Iniciar Nova Entrega</QRCodeTitle>
-            <InputButtonContainer>
-              <InputLabel>Número de Identificação</InputLabel>
-              <InputRow>
-                <StyledInput
-                  placeholder="Digite o número"
-                  onChangeText={(text) => setInputValue(text)}
-                  value={inputValue}
-                />
-                <OkButton onPress={navigateToDelivery}>
-                  <OkButtonText>OK</OkButtonText>
-                </OkButton>
-              </InputRow>
-            </InputButtonContainer>
-            <TouchableOpacity>
-              <QRCodeButton>
-                <QRCodeIcon width={22} height={22} fill="#fff" />
-                <QRCodeButtonText>Escanear Qrcode</QRCodeButtonText>
-              </QRCodeButton>
-            </TouchableOpacity>
-          </QRCodeBox>
+      <QRCodeBox>
+        <QRCodeTitle>Iniciar Nova Entrega</QRCodeTitle>
+        <InputButtonContainer>
+          <InputLabel>Número de Identificação</InputLabel>
+          <InputRow>
+            <StyledInput
+              placeholder="Digite o número"
+              onChangeText={(text) => setInputValue(text)}
+              value={inputValue}
+            />
+            <OkButton onPress={navigateToDelivery}>
+              <OkButtonText>OK</OkButtonText>
+            </OkButton>
+          </InputRow>
+        </InputButtonContainer>
+        <TouchableOpacity>
+          <QRCodeButton>
+            <QRCodeIcon width={22} height={22} fill="#fff" />
+            <QRCodeButtonText>Escanear Qrcode</QRCodeButtonText>
+          </QRCodeButton>
+        </TouchableOpacity>
+      </QRCodeBox>
       <TabbarBox>
         <TabbarCard onPress={handlePressRelatorios}>
           <View>
-            <RelatoriosIcon width={28} height={28} fill="#FA641E" />
+            <RelatoriosIcon
+              width={28}
+              height={28}
+              fill={
+                stateRelatorios === 'ativo'
+                  ? '#FA641E'
+                  : stateRelatorios === 'desativado'
+                  ? '#9F9F9F'
+                  : '#FA641E'
+              }
+            />
+            {stateRelatorios === 'ativoComNotificacao' && <NotificationDot />}
           </View>
-          <TabbarText>Relatórios</TabbarText>
+          <TabbarText
+            style={{
+              color:
+                stateRelatorios === 'ativo'
+                  ? '#FA641E'
+                  : stateRelatorios === 'desativado'
+                  ? '#9F9F9F'
+                  : '#FA641E',
+            }}
+          >
+            Relatórios
+          </TabbarText>
         </TabbarCard>
         <TabbarCard onPress={handlePressGeral}>
           <View>
-            <GeralIcon width={28} height={28} fill="#FA641E" />
+            <GeralIcon
+              width={28}
+              height={28}
+              fill={
+                stateGeral === 'ativo'
+                  ? '#FA641E'
+                  : stateGeral === 'desativado'
+                  ? '#9F9F9F'
+                  : '#FA641E'
+              }
+            />
+            {stateGeral === 'ativoComNotificacao' && <NotificationDot />}
           </View>
-          <TabbarText>Visão geral</TabbarText>
+          <TabbarText
+            style={{
+              color:
+                stateGeral === 'ativo'
+                  ? '#FA641E'
+                  : stateGeral === 'desativado'
+                  ? '#9F9F9F'
+                  : '#FA641E',
+            }}
+          >
+            Visão geral
+          </TabbarText>
         </TabbarCard>
         <TabbarCard onPress={handlePressPerfil}>
           <View>
-            <PerfilIcon width={28} height={28} fill="#FA641E" />
+            <PerfilIcon
+              width={28}
+              height={28}
+              fill={
+                statePerfil === 'ativo'
+                  ? '#FA641E'
+                  : statePerfil === 'desativado'
+                  ? '#9F9F9F'
+                  : '#FA641E'
+              }
+            />
+            {statePerfil === 'ativoComNotificacao' && <NotificationDot />}
           </View>
-          <TabbarText>Perfil</TabbarText>
+          <TabbarText
+            style={{
+              color:
+                statePerfil === 'ativo'
+                  ? '#FA641E'
+                  : statePerfil === 'desativado'
+                  ? '#9F9F9F'
+                  : '#FA641E',
+            }}
+          >
+            Perfil
+          </TabbarText>
         </TabbarCard>
       </TabbarBox>
     </Container>

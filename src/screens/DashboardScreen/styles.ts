@@ -23,7 +23,7 @@ export const FisrtBox = styled.View`
 
 export const GeralVisionText = styled.Text`
   font-size: ${wp(pxToWp(18))}px;
-  font-weight: bold;
+  font-family: Poppins-Medium;
   color: #222222;
   margin-left: 16px;
   flex: 1;
@@ -53,12 +53,14 @@ export const TopBox = styled.View`
 
 export const Title = styled.Text`
   font-size: ${wp(pxToWp(16))}px;
+  font-family: Poppins-Medium;
   color: #fff;
   line-height: 25px;
 `;
 
 export const WonDate = styled.Text`
   font-size: ${wp(pxToWp(13))}px;
+  font-family: Poppins-Medium;
   color: #fff;
   line-height: 25px;
 `;
@@ -71,7 +73,7 @@ export const MoneyBox = styled.View`
 
 export const Value = styled.Text`
   font-size: ${wp(pxToWp(24))}px;
-  font-weight: bold;
+  font-family: Poppins-Medium;
   color: #fff;
   text-align: center;
   margin-top: 10px;
@@ -94,6 +96,7 @@ export const ResumeBox = styled.View`
 export const ResumeTitle = styled.Text`
   text-align: start;
   font-size: ${wp(pxToWp(16))}px;
+  font-family: Poppins-Bold;
   color: #333333;
   line-height: 25px;
   margin-bottom: 18px;
@@ -115,13 +118,15 @@ export const CardBox = styled.View`
 export const CardText = styled.Text`
   text-align: center;
   font-size: ${wp(pxToWp(11))}px;
+  font-family: Poppins-Regular;
   line-height: 17px;
   color: #9f9f9f;
 `;
 
 export const CardNumber = styled.Text`
   text-align: center;
-  font-size: 40px;
+  font-size: ${wp(pxToWp(40))}px;
+  font-family: Poppins-Medium;
 `;
 
 export const QRCodeBox = styled.View`
@@ -136,6 +141,7 @@ export const QRCodeBox = styled.View`
 
 export const QRCodeTitle = styled.Text`
   font-size: ${wp(pxToWp(16))}px;
+  font-family: Poppins-Bold;
   line-height: 25px;
   color: #333333;
   padding: 0 2px;
@@ -151,6 +157,7 @@ export const InputButtonContainer = styled.View`
 
 export const InputLabel = styled.Text`
   font-size: ${wp(pxToWp(14))}px;
+  font-family: Poppins-Regular;
   color: #333333;
   margin-bottom: 8px;
 `;
@@ -179,6 +186,7 @@ export const OkButton = styled.TouchableOpacity`
 export const OkButtonText = styled.Text`
   color: #fff;
   font-size: ${wp(pxToWp(17))}px;
+  font-family: Poppins-Medium;
   line-height: 26px;
 `;
 
@@ -197,6 +205,7 @@ export const QRCodeButton = styled(LinearGradient).attrs({
 export const QRCodeButtonText = styled.Text`
   color: #fff;
   font-size: ${wp(pxToWp(16))}px;
+  font-family: Poppins-Medium;
   margin-left: 8px;
 `;
 
@@ -219,6 +228,7 @@ export const TabbarText = styled.Text`
   font-size: ${wp(pxToWp(12))}px;
   color: #676767;
   margin-top: 4px;
+  font-family: Poppins-Regular;
 `;
 
 export const NotificationDot = styled.View`
