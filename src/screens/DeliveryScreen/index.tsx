@@ -29,7 +29,7 @@ import {
   TimelineTitle,
   TimelineSubtitle,
 } from './styles';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 
 const DeliveryScreen = () => {
   const navigation = useNavigation();
@@ -37,12 +37,13 @@ const DeliveryScreen = () => {
   return (
     <Container>
       <FisrtBox>
-        <ArrowBack
-          width={24}
-          height={24}
-          fill="#FA641E"
-          onPress={() => navigation.navigate('Dashboard')}
-        />
+        <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+         <ArrowBack
+           width={30}
+           height={30}
+           fill="#FA641E"
+         />
+        </TouchableOpacity>
         <NewDeliveryText>Nova entrega</NewDeliveryText>
       </FisrtBox>
       <RowBox>

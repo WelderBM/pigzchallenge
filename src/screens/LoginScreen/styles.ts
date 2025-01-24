@@ -1,4 +1,10 @@
 import styled from 'styled-components/native';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { Dimensions } from 'react-native';
+
+const { width: screenWidth, } = Dimensions.get('window');
+
+const pxToWp = (px: number) => (px / screenWidth) * 100;
 
 export const Container = styled.View`
   flex: 1;
@@ -9,7 +15,7 @@ export const Container = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-size: 18px;
+  font-size: ${wp(pxToWp(18))}px;
   margin-top: 8px;
   margin-bottom: 40px;
   font-weight: bold;
@@ -19,7 +25,7 @@ export const Title = styled.Text`
 
 export const Subtitle = styled.Text`
   align-self: flex-start;
-  font-size: 16px;
+  font-size: ${wp(pxToWp(16))}px;
   margin-bottom: 16px;
   font-weight: bold;
   color: #222222;
@@ -28,7 +34,7 @@ export const Subtitle = styled.Text`
 
 export const ForgotPassword = styled.Text`
   align-self: flex-start;
-  font-size: 13px;
+  font-size: ${wp(pxToWp(13))}px;
   margin-top: 8px;
   margin-bottom: 24px;
   text-decoration: underline;
@@ -44,13 +50,13 @@ export const CreateAccountBox = styled.View`
 `;
 
 export const CreateAccountgray = styled.Text`
-  font-size: 13px;
+  font-size: ${wp(pxToWp(13))}px;
   color: #676767;
   line-height: 20px;
 `;
 
 export const CreateAccountorange = styled.Text`
-  font-size: 13px;
+  font-size: ${wp(pxToWp(13))}px;
   color: #FA641E;
   line-height: 20px;
 `;
@@ -64,14 +70,14 @@ export const LoginWithBox = styled.View`
 `;
 
 export const LoginWith = styled.Text`
-  font-size: 13px;
+  font-size: ${wp(pxToWp(13))}px;
   color: #333333;
   line-height: 20px;
 `;
 
 export const Line = styled.View`
-  border: 1px solid #707070;
   flex: 1;
-  height: 0;
+  height: 1px;
+  background-color: #707070;
   margin: 0 10px;
 `;

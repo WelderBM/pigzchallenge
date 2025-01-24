@@ -31,7 +31,6 @@ import {
   TabbarBox,
   TabbarCard,
   TabbarText,
-  NotificationDot 
 } from './styles';
 import ArrowBack from '../../assets/arrow_back_black_24dp.svg';
 import Eye from '../../assets/eye-dashboard.svg';
@@ -45,9 +44,6 @@ const DashboardScreen = () => {
   const navigation = useNavigation();
   const [isVisible, setIsVisible] = useState(true);
   const [inputValue, setInputValue] = useState('');
-  const [stateRelatorios, setStateRelatorios] = useState<'ativo' | 'ativoComNotificacao' | 'desativado'>('desativado');
-  const [stateGeral, setStateGeral] = useState<'ativo' | 'ativoComNotificacao' | 'desativado'>('desativado');
-  const [statePerfil, setStatePerfil] = useState<'ativo' | 'ativoComNotificacao' | 'desativado'>('desativado');
 
   const handlePressRelatorios = () => {
     setStateRelatorios((prev) => {
@@ -56,19 +52,17 @@ const DashboardScreen = () => {
       return 'desativado';
     });
   };
-  const handlePressGeral = () => {
-    setStateGeral((prev) => {
-      if (prev === 'desativado') return 'ativo';
-      if (prev === 'ativo') return 'ativoComNotificacao';
-      return 'desativado';
-    });
-  };
-  const handlePressPerfil = () => {
-    setStatePerfil((prev) => {
-      if (prev === 'desativado') return 'ativo';
-      if (prev === 'ativo') return 'ativoComNotificacao';
-      return 'desativado';
-    });
+
+  useEffect(() => {
+    if (isCameraActive) {
+      requestPermissions();
+    }
+  }, [isCameraActive]);
+
+  const handleBarCodeRead = (e) => {
+    setQrCodeData(e.data);
+    setIsCameraActive(false);
+    Alert.alert('QR Code Escaneado', `Dados: ${e.data}`);
   };
 
   const toggleVisibility = () => {
@@ -87,12 +81,9 @@ const DashboardScreen = () => {
   return (
     <Container>
       <FisrtBox>
-        <ArrowBack
-          width={24}
-          height={24}
-          fill="#FA641E"
-          onPress={() => navigation.navigate('Login')}
-        />
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <ArrowBack width={30} height={30} fill="#FA641E" />
+        </TouchableOpacity>
         <GeralVisionText>Visão geral</GeralVisionText>
       </FisrtBox>
       <InfoBox>
@@ -103,11 +94,7 @@ const DashboardScreen = () => {
         <MoneyBox>
           <Value>{isVisible ? 'R$ 150' : '----'}</Value>
           <EyeButton onPress={toggleVisibility}>
-            {!isVisible ? (
-              <Eye width={24} height={24} />
-            ) : (
-              <EyeSlash width={24} height={24} />
-            )}
+            {!isVisible ? <Eye width={24} height={24} /> : <EyeSlash width={24} height={24} />}
           </EyeButton>
         </MoneyBox>
       </InfoBox>
@@ -128,77 +115,44 @@ const DashboardScreen = () => {
           </CardBox>
         </ResumeCardsBox>
       </ResumeBox>
-      <QRCodeBox>
-        <QRCodeTitle>Iniciar Nova Entrega</QRCodeTitle>
-        <InputButtonContainer>
-          <InputLabel>Número de Identificação</InputLabel>
-          <InputRow>
-            <StyledInput
-              placeholder="Digite o número"
-              onChangeText={(text) => setInputValue(text)} 
-              value={inputValue}
-            />
-            <OkButton onPress={navigateToDelivery}>
-              <OkButtonText>OK</OkButtonText>
-            </OkButton>
-          </InputRow>
-        </InputButtonContainer>
-        <TouchableOpacity onPress={navigateToDelivery}>
-          <QRCodeButton>
-            <QRCodeIcon width={22} height={22} fill="#fff" />
-            <QRCodeButtonText>Escanear Qrcode</QRCodeButtonText>
-          </QRCodeButton>
-        </TouchableOpacity>
-      </QRCodeBox>
+          <QRCodeBox>
+            <QRCodeTitle>Iniciar Nova Entrega</QRCodeTitle>
+            <InputButtonContainer>
+              <InputLabel>Número de Identificação</InputLabel>
+              <InputRow>
+                <StyledInput
+                  placeholder="Digite o número"
+                  onChangeText={(text) => setInputValue(text)}
+                  value={inputValue}
+                />
+                <OkButton onPress={navigateToDelivery}>
+                  <OkButtonText>OK</OkButtonText>
+                </OkButton>
+              </InputRow>
+            </InputButtonContainer>
+            <TouchableOpacity onPress={() => setIsCameraActive(true)}>
+              <QRCodeButton>
+                <QRCodeIcon width={22} height={22} fill="#fff" />
+                <QRCodeButtonText>Escanear Qrcode</QRCodeButtonText>
+              </QRCodeButton>
+            </TouchableOpacity>
+          </QRCodeBox>
       <TabbarBox>
-        <TabbarCard onPress={handlePressRelatorios}>
+        <TabbarCard onPress={() => {}}>
           <View>
-            <RelatoriosIcon
-              width={28}
-              height={28}
-              fill={
-                stateRelatorios === 'ativo'
-                  ? '#FA641E'
-                  : stateRelatorios === 'desativado'
-                  ? '#9F9F9F'
-                  : '#FA641E'
-              }
-            />
-            {stateRelatorios === 'ativoComNotificacao' && <NotificationDot />}
+            <RelatoriosIcon width={28} height={28} fill="#FA641E" />
           </View>
           <TabbarText>Relatórios</TabbarText>
         </TabbarCard>
-        <TabbarCard onPress={handlePressGeral}>
+        <TabbarCard onPress={() => {}}>
           <View>
-            <GeralIcon
-              width={28}
-              height={28}
-              fill={
-                stateGeral === 'ativo'
-                  ? '#FA641E'
-                  : stateGeral === 'desativado'
-                  ? '#9F9F9F'
-                  : '#FA641E'
-              }
-            />
-            {stateGeral === 'ativoComNotificacao' && <NotificationDot />}
+            <GeralIcon width={28} height={28} fill="#FA641E" />
           </View>
           <TabbarText>Visão geral</TabbarText>
         </TabbarCard>
-        <TabbarCard onPress={handlePressPerfil}>
+        <TabbarCard onPress={() => {}}>
           <View>
-            <PerfilIcon
-              width={28}
-              height={28}
-              fill={
-                statePerfil === 'ativo'
-                  ? '#FA641E'
-                  : statePerfil === 'desativado'
-                  ? '#9F9F9F'
-                  : '#FA641E'
-              }
-            />
-            {statePerfil === 'ativoComNotificacao' && <NotificationDot />}
+            <PerfilIcon width={28} height={28} fill="#FA641E" />
           </View>
           <TabbarText>Perfil</TabbarText>
         </TabbarCard>

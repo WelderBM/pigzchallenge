@@ -1,8 +1,11 @@
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
-import RelatoriosIcon from '../../assets/relatorios.svg';
-import GeralIcon from '../../assets/geral.svg';
-import PerfilIcon from '../../assets/perfil.svg';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { Dimensions } from 'react-native';
+
+const { width: screenWidth, } = Dimensions.get('window');
+
+const pxToWp = (px: number) => (px / screenWidth) * 100;
 
 export const Container = styled.View`
   flex: 1;
@@ -19,7 +22,7 @@ export const FisrtBox = styled.View`
 `;
 
 export const GeralVisionText = styled.Text`
-  font-size: 18px;
+  font-size: ${wp(pxToWp(18))}px;
   font-weight: bold;
   color: #222222;
   margin-left: 16px;
@@ -46,13 +49,13 @@ export const TopBox = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-size: 16px;
+  font-size: ${wp(pxToWp(16))}px;
   color: #fff;
   line-height: 25px;
 `;
 
 export const WonDate = styled.Text`
-  font-size: 13px;
+  font-size: ${wp(pxToWp(13))}px;
   color: #fff;
   line-height: 25px;
 `;
@@ -65,7 +68,7 @@ export const MoneyBox = styled.View`
 `;
 
 export const Value = styled.Text`
-  font-size: 24px;
+  font-size: ${wp(pxToWp(24))}px;
   font-weight: bold;
   color: #fff;
   text-align: center;
@@ -88,7 +91,7 @@ export const ResumeBox = styled.View`
 
 export const ResumeTitle = styled.Text`
   text-align: start;
-  font-size: 16px;
+  font-size: ${wp(pxToWp(16))}px;
   color: #333333;
   line-height: 25px;
   margin-bottom: 18px;
@@ -109,7 +112,7 @@ export const CardBox = styled.View`
 
 export const CardText = styled.Text`
   text-align: center;
-  font-size: 11px;
+  font-size: ${wp(pxToWp(11))}px;
   line-height: 17px;
   color: #9f9f9f;
 `;
@@ -130,7 +133,7 @@ export const QRCodeBox = styled.View`
 `;
 
 export const QRCodeTitle = styled.Text`
-  font-size: 16px;
+  font-size: ${wp(pxToWp(16))}px;
   line-height: 25px;
   color: #333333;
   padding: 0 2px;
@@ -145,7 +148,7 @@ export const InputButtonContainer = styled.View`
 `;
 
 export const InputLabel = styled.Text`
-  font-size: 14px;
+  font-size: ${wp(pxToWp(14))}px;
   color: #333333;
   margin-bottom: 8px;
 `;
@@ -173,7 +176,7 @@ export const OkButton = styled.TouchableOpacity`
 
 export const OkButtonText = styled.Text`
   color: #fff;
-  font-size: 17px;
+  font-size: ${wp(pxToWp(17))}px;
   line-height: 26px;
 `;
 
@@ -191,7 +194,7 @@ export const QRCodeButton = styled(LinearGradient).attrs({
 
 export const QRCodeButtonText = styled.Text`
   color: #fff;
-  font-size: 16px;
+  font-size: ${wp(pxToWp(16))}px;
   margin-left: 8px;
 `;
 
@@ -211,7 +214,7 @@ export const TabbarBox = styled.View`
 `;
 
 export const TabbarText = styled.Text`
-  font-size: 12px;
+  font-size: ${wp(pxToWp(12))}px;
   color: #676767;
   margin-top: 4px;
 `;

@@ -1,8 +1,14 @@
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { Dimensions } from 'react-native';
+
+const { width: screenWidth, } = Dimensions.get('window');
+
+const pxToWp = (px: number) => (px / screenWidth) * 100;
 
 export const Container = styled.View`
-height: 100%;
+  height: 100%;
   padding: 24px;
   background-color: #fff;
 `;
@@ -15,7 +21,7 @@ export const FisrtBox = styled.View`
 `;
 
 export const NewDeliveryText = styled.Text`
-  font-size: 18px;
+  font-size: ${wp(pxToWp(18))}px;
   font-weight: bold;
   color: #222222;
   margin-left: 16px;
@@ -42,20 +48,20 @@ export const InfoBox = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-size: 14px;
+  font-size: ${wp(pxToWp(14))}px;
   color: #707070;
   line-height: 21px;
 `;
 
 export const Value = styled.Text`
-  font-size: 20px;
+  font-size: ${wp(pxToWp(20))}px;
   font-weight: bold;
   line-height: 30px;
   color: #fa641f;
 `;
 
 export const ValueLarge = styled.Text`
-  font-size: 35px;
+  font-size:${wp(pxToWp(35))}px;
   font-weight: bold;
   line-height: 53px;
   color: #fa641f;
@@ -87,14 +93,14 @@ export const DeliveryMotoBox = styled(LinearGradient).attrs({
 export const DeliveryTitle = styled.Text`
   color: #ffffff;
   line-height: 22px;
-  font-size: 18px;
+  font-size: ${wp(pxToWp(18))}px;
   font-weight: bold;
 `;
 
 export const DeliverySubtitle = styled.Text`
   color: #ffffff;
   line-height: 14px;
-  font-size: 12px;
+  font-size: ${wp(pxToWp(12))}px;
   margin-top: 5px;
 `;
 
@@ -117,7 +123,7 @@ export const ButtonContainer = styled(LinearGradient).attrs({
 
 export const ButtonText = styled.Text`
   color: #fff;
-  font-size: 16px;
+  font-size: ${wp(pxToWp(16))}px;
   line-height: 25px;
   margin-left: 8px;
 `;
@@ -135,7 +141,7 @@ export const GhostButtonContainer = styled.TouchableOpacity`
 
 export const GhostText = styled.Text`
   color: #e8453e;
-  font-size: 16px;
+  font-size: ${wp(pxToWp(16))}px;
   line-height: 25px;
   margin-left: 8px;
 `;
@@ -169,7 +175,7 @@ export const TimelinePoint = styled.View<{ active?: boolean }>`
 `;
 
 export const TimelineTitle = styled.Text`
-  font-size: 18px;
+  font-size: ${wp(pxToWp(18))}px;
   line-height: 27px;
   color: #fa641e;
   font-weight: bold;
@@ -178,7 +184,7 @@ export const TimelineTitle = styled.Text`
 `;
 
 export const TimelineSubtitle = styled.Text`
-  font-size: 14px;
+  font-size: ${wp(pxToWp(14))}px;
   color: #707070;
   line-height: 21px;
   padding-left: 16px;
