@@ -42,12 +42,13 @@ import GeralIcon from '../../assets/geral.svg';
 import PerfilIcon from '../../assets/perfil.svg';
 
 const DashboardScreen = () => {
-  const navigation = useNavigation();
   const [isVisible, setIsVisible] = useState(true);
   const [inputValue, setInputValue] = useState('');
   const [stateRelatorios, setStateRelatorios] = useState<'ativo' | 'ativoComNotificacao' | 'desativado'>('desativado');
-  const [stateGeral, setStateGeral] = useState<'ativo' | 'ativoComNotificacao' | 'desativado'>('desativado');
-  const [statePerfil, setStatePerfil] = useState<'ativo' | 'ativoComNotificacao' | 'desativado'>('desativado');
+  const [stateGeral, setStateGeral] = useState<'ativo' | 'ativoComNotificacao' | 'desativado'>('ativo');
+  const [statePerfil, setStatePerfil] = useState<'ativo' | 'ativoComNotificacao' | 'desativado'>('ativoComNotificacao');
+
+  const navigation = useNavigation();
 
   const handlePressRelatorios = () => {
     setStateRelatorios((prev) => {
@@ -82,14 +83,14 @@ const DashboardScreen = () => {
     .toString()
     .padStart(2, '0')}`;
 
-  const navigateToDelivery = () => {
-    navigation.navigate('Delivery');
-  };
+  const navigateToDelivery = () => navigation.navigate('Delivery');
+
+  const navigateToLogin = () => navigation.goBack();
 
   return (
     <Container>
       <FisrtBox>
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity onPress={navigateToLogin} style={{ zIndex: 1 }}>
           <ArrowBack width={30} height={30} fill="#FA641E" />
         </TouchableOpacity>
         <GeralVisionText>Visão geral</GeralVisionText>

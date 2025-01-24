@@ -32,12 +32,15 @@ import {
 import { TouchableOpacity, View } from 'react-native';
 
 const DeliveryScreen = () => {
+
   const navigation = useNavigation();
+
+  const goToDashboard = () => navigation.navigate('Dashboard')
 
   return (
     <Container>
       <FisrtBox>
-        <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+        <TouchableOpacity onPress={goToDashboard} style={{ zIndex: 1 }}>
          <ArrowBack
            width={30}
            height={30}
