@@ -44,6 +44,9 @@ const DashboardScreen = () => {
   const navigation = useNavigation();
   const [isVisible, setIsVisible] = useState(true);
   const [inputValue, setInputValue] = useState('');
+  const [stateRelatorios, setStateRelatorios] = useState('');
+  const [stateGeral, setStateGeral] = useState('');
+  const [statePerfil, setStatePerfil] = useState('');
 
   const handlePressRelatorios = () => {
     setStateRelatorios((prev) => {
@@ -52,18 +55,21 @@ const DashboardScreen = () => {
       return 'desativado';
     });
   };
-
-  useEffect(() => {
-    if (isCameraActive) {
-      requestPermissions();
-    }
-  }, [isCameraActive]);
-
-  const handleBarCodeRead = (e) => {
-    setQrCodeData(e.data);
-    setIsCameraActive(false);
-    Alert.alert('QR Code Escaneado', `Dados: ${e.data}`);
+  const handlePressGeral = () => {
+    setStateGeral((prev) => {
+      if (prev === 'desativado') return 'ativo';
+      if (prev === 'ativo') return 'ativoComNotificacao';
+      return 'desativado';
+    });
   };
+  const handlePressPerfil = () => {
+    setStateRelatorios((prev) => {
+      if (prev === 'desativado') return 'ativo';
+      if (prev === 'ativo') return 'ativoComNotificacao';
+      return 'desativado';
+    });
+  };
+
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
@@ -130,7 +136,7 @@ const DashboardScreen = () => {
                 </OkButton>
               </InputRow>
             </InputButtonContainer>
-            <TouchableOpacity onPress={() => setIsCameraActive(true)}>
+            <TouchableOpacity>
               <QRCodeButton>
                 <QRCodeIcon width={22} height={22} fill="#fff" />
                 <QRCodeButtonText>Escanear Qrcode</QRCodeButtonText>
@@ -138,19 +144,19 @@ const DashboardScreen = () => {
             </TouchableOpacity>
           </QRCodeBox>
       <TabbarBox>
-        <TabbarCard onPress={() => {}}>
+        <TabbarCard onPress={handlePressRelatorios}>
           <View>
             <RelatoriosIcon width={28} height={28} fill="#FA641E" />
           </View>
           <TabbarText>Relatórios</TabbarText>
         </TabbarCard>
-        <TabbarCard onPress={() => {}}>
+        <TabbarCard onPress={handlePressGeral}>
           <View>
             <GeralIcon width={28} height={28} fill="#FA641E" />
           </View>
           <TabbarText>Visão geral</TabbarText>
         </TabbarCard>
-        <TabbarCard onPress={() => {}}>
+        <TabbarCard onPress={handlePressPerfil}>
           <View>
             <PerfilIcon width={28} height={28} fill="#FA641E" />
           </View>

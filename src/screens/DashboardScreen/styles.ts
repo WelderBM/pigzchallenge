@@ -28,6 +28,9 @@ export const GeralVisionText = styled.Text`
   margin-left: 16px;
   flex: 1;
   text-align: center;
+  position: absolute;
+  left: -50%;
+  right: -50%;
 `;
 
 export const InfoBox = styled(LinearGradient).attrs({
@@ -64,7 +67,6 @@ export const MoneyBox = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 9px;
 `;
 
 export const Value = styled.Text`
@@ -208,7 +210,7 @@ export const TabbarBox = styled.View`
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
-  padding: 20px 50px;
+  padding: 20px;
   position: absolute;
   bottom: 0;
 `;

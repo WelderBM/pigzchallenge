@@ -27,6 +27,9 @@ export const NewDeliveryText = styled.Text`
   margin-left: 16px;
   flex: 1;
   text-align: center;
+  position: absolute;
+  left: -50%;
+  right: -50%;
 `;
 
 export const RowBox = styled.View`
