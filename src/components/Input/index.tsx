@@ -5,7 +5,7 @@ import Eye from '../../assets/eye.svg';
 import EyeSlash from '../../assets/eye-slash.svg';
 
 interface InputProps extends TextInputProps {
-  placeholder: string;
+  placeholder?: string;
   label?: string;
   isPassword?: boolean;
 }
@@ -24,7 +24,7 @@ const Input: React.FC<InputProps> = ({ placeholder, label, isPassword, ...rest }
       {label && <Label>{label}</Label>}
       <IconWrapper>
         <StyledInput
-          placeholder={isPassword && !isSecure ? '********' : placeholder}
+          placeholder={isPassword && !isSecure ? '********' : placeholder }
           secureTextEntry={isSecure}
           {...rest}
           placeholderTextColor="#4B4B4B"

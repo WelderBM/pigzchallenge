@@ -1,24 +1,17 @@
 import React from 'react';
 import { TouchableOpacityProps } from 'react-native';
-import { ButtonContainer, ButtonText } from './styles';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../navigation/types';
+import { ButtonContainer, ButtonText, TouchableWrapper } from './styles';
 
 interface ButtonProps extends TouchableOpacityProps {
   title: string;
 }
-type DashboardScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Dashboard'>;
 
-const Button: React.FC<ButtonProps> = ({ title}) => {
-  const navigation = useNavigation<DashboardScreenNavigationProp>();
-  const navigateToDashboard = () => {
-    navigation.navigate('Dashboard');
-  };
-  return <ButtonContainer  onPress={navigateToDashboard} >
-    <ButtonText>{title}</ButtonText>
-  </ButtonContainer>
-}
-;
+const Button: React.FC<ButtonProps> = ({ title, ...rest }) => (
+  <TouchableWrapper {...rest}>
+    <ButtonContainer>
+      <ButtonText>{title}</ButtonText>
+    </ButtonContainer>
+  </TouchableWrapper>
+);
 
 export default Button;

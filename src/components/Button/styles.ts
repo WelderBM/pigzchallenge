@@ -1,5 +1,9 @@
-import LinearGradient from 'react-native-linear-gradient';
 import styled from 'styled-components/native';
+import LinearGradient from 'react-native-linear-gradient';
+
+export const TouchableWrapper = styled.TouchableOpacity`
+  width: 100%;
+`;
 
 export const ButtonContainer = styled(LinearGradient).attrs({
   colors: ['#FF881F', '#FA641E'],
