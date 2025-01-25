@@ -2,7 +2,7 @@
 
 um aplicativo mobile desenvolvido com React Native. Este projeto utiliza diversas bibliotecas e ferramentas modernas para fornecer uma interface interativa e funcional, incluindo um painel de controle detalhado.
 ---
-![print das 3 telas do app](https://github.com/WelderBM/pigzchallenge/blob/main/Captura%20de%20tela%202025-01-25%20164000.png)
+![print das 3 telas do app](https://github.com/WelderBM/pigzchallenge/blob/main/Captura%20de%20tela%202025-01-25%20164703.png)
 ---
 
 ## Tecnologias Utilizadas
