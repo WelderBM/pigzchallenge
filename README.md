@@ -1,7 +1,8 @@
 # Pigz Challenge
 
-Bem-vindo ao **Pigz Challenge**, um aplicativo mobile desenvolvido com React Native. Este projeto utiliza diversas bibliotecas e ferramentas modernas para fornecer uma interface interativa e funcional, incluindo suporte para câmera, leitura de QR codes e um painel de controle detalhado.
-
+um aplicativo mobile desenvolvido com React Native. Este projeto utiliza diversas bibliotecas e ferramentas modernas para fornecer uma interface interativa e funcional, incluindo um painel de controle detalhado.
+---
+![print das 3 telas do app](https://github.com/WelderBM/pigzchallenge/blob/main/Captura%20de%20tela%202025-01-25%20164000.png)
 ---
 
 ## Tecnologias Utilizadas
@@ -114,23 +115,6 @@ cd ..
 
 ---
 
-## Problemas Comuns
-
-1. **Erro de permissões na câmera:**
-   - Verifique se as permissões necessárias estão adicionadas no `AndroidManifest.xml`.
-
-2. **Erro ao instalar o aplicativo:**
-   - Limpe os caches do Gradle e do Node.js.
-   - Certifique-se de que o SDK e o JDK estão configurados corretamente.
-
----
-
-## Contribuição
-
-Sinta-se à vontade para contribuir com o projeto! Faça um fork do repositório, crie um branch para sua feature ou correção e envie um pull request.
-
----
-
 ## Licença
 
 Este projeto está licenciado sob a Licença MIT. Consulte o arquivo `LICENSE` para mais informações.
@@ -140,6 +124,6 @@ Este projeto está licenciado sob a Licença MIT. Consulte o arquivo `LICENSE` p
 ## Contato
 
 Se tiver dúvidas ou sugestões, entre em contato:
-- **Email:** seu-email@exemplo.com
-- **GitHub:** [seu-usuario](https://github.com/seu-usuario)
+- **Email:** welderb40@gmail.com
+- **whatsapp:** 5595991341586 - Welder
 
