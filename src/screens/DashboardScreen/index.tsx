@@ -85,7 +85,7 @@ const DashboardScreen = () => {
 
   const navigateToDelivery = () => navigation.navigate('Delivery');
 
-  const navigateToLogin = () => navigation.goBack();
+  const navigateToLogin = () => navigation.navigate('Login');
 
   return (
     <Container>
